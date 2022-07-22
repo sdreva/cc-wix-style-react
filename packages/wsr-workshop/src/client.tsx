@@ -1,5 +1,6 @@
 import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
+import { WixStyleReactProvider } from 'wix-style-react';
 import { I18nextProvider, initI18n } from '@wix/wix-i18n-config';
 import { create as createFedopsLogger } from '@wix/fedops-logger';
 import App from './components/App';
@@ -18,7 +19,9 @@ fedopsLogger.appLoaded();
 ReactDOM.render(
   <Suspense fallback="...loading">
     <I18nextProvider i18n={i18n}>
-      <App />
+      <WixStyleReactProvider>
+        <App />
+      </WixStyleReactProvider>
     </I18nextProvider>
   </Suspense>,
   document.getElementById('root'),
