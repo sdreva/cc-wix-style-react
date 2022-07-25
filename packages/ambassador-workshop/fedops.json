@@ -1,0 +1,21 @@
+[
+  {
+    "appName": "ambassador-workshop.pages.index",
+    "notifications": {
+      "slack_channels": [
+        "ambassador-workshop-urgent"
+      ]
+    },
+    "deploy_annotations": [
+      "ambassador-workshop",
+      "business-manager"
+    ],
+    "petri_annotations": {
+      "scopes": [
+        "business-manager",
+        "bm-apps-5aa0698b-6718-426e-b7ad-8c176371a00c"
+      ]
+    },
+    "ignore_first_request_roundtrip": true
+  }
+]

@@ -1,0 +1,11 @@
+{
+  "$schema": "target/schemas/.application.schema.json",
+  "moduleId": "AMBASSADOR_WORKSHOP",
+  "appDefinitionId": "5aa0698b-6718-426e-b7ad-8c176371a00c",
+  "isCoreService": true,
+  "routeNamespace": "ambassador-workshop",
+  "translations": {
+    "enabled": true
+  },
+  "enabledByExperiments": ["specs.infra.yoshi-bm.ChangeMe"]
+}
