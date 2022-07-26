@@ -1,28 +1,33 @@
 import React, { FC } from 'react';
-import { useTranslation, useAppLoaded, Trans } from '@wix/yoshi-flow-bm';
-import { Page, Layout, Cell, Card, Text } from 'wix-style-react';
-
-const introUrl = 'https://github.com/wix-private/business-manager';
+import { useAppLoaded, useRequest } from '@wix/yoshi-flow-bm';
+import { Page, Layout, Cell, Card } from 'wix-style-react';
+import { fetch } from '../api/comments.api';
 
 const Index: FC = () => {
   useAppLoaded({ auto: true });
 
-  const { t } = useTranslation();
+  const { loading, error, data: comments } = useRequest(fetch());
+
+  const buildComments = () => {
+    if (loading) {
+      return <div>Loading</div>;
+    }
+    if (error) {
+      return <div>Error: {error.message}</div>;
+    }
+
+    return comments?.map((comment) => <div>{comment.text}</div>);
+  };
 
   return (
     <Page>
-      <Page.Header dataHook="app-title" title={t('app.title')} />
+      <Page.Header dataHook="app-title" title="Ambassador workshop" />
       <Page.Content>
         <Layout>
           <Cell>
             <Card>
-              <Card.Content>
-                <Text dataHook="get-started">
-                  <Trans i18nKey="app.get-started">
-                    GET STARTED <a href={introUrl}>HERE</a>
-                  </Trans>
-                </Text>
-              </Card.Content>
+              <Card.Header title="Comments" />
+              <Card.Content>{buildComments()}</Card.Content>
             </Card>
           </Cell>
         </Layout>
